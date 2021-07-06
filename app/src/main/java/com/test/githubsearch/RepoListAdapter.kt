@@ -8,6 +8,7 @@ import com.test.githubsearch.databinding.ListItemRepositoriesBinding
 
 /**
  * Adapter class for repository list
+ * @author Julius Villagracia
  */
 class RepoListAdapter : RecyclerView.Adapter<RepoListAdapter.ViewHolder>() {
 
