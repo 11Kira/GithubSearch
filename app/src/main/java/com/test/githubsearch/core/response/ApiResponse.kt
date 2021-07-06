@@ -1,4 +1,4 @@
-package com.test.githubsearch.response
+package com.test.githubsearch.core.response
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

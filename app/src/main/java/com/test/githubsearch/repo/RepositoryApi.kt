@@ -1,6 +1,6 @@
 package com.test.githubsearch.repo
 
-import com.test.githubsearch.response.ApiResponse
+import com.test.githubsearch.core.response.ApiResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
