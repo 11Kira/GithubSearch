@@ -14,7 +14,7 @@
             android:nestedScrollingEnabled="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:layoutAnimation="@null"/>
+            tools:listitem="@layout/list_item_repositories"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
