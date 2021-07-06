@@ -13,6 +13,7 @@ import com.test.githubsearch.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+    private lateinit var repoListAdapter: RepoListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +24,11 @@ class MainActivity : AppCompatActivity() {
      * Initializes the recyclerview and contents
      */
     private fun initRecyclerView() {
+        repoListAdapter = RepoListAdapter()
         binding.repoList.apply {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
-            //adapter = beerListAdapter
+            adapter = repoListAdapter
         }
     }
 
