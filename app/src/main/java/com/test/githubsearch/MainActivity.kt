@@ -1,8 +1,11 @@
 package com.test.githubsearch
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,15 +28,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        searchRepositories()
+        initSearch(binding.searchBox)
         observeSearchResults()
     }
 
     /**
      * Submits the search query to viewModel
      */
-    private fun searchRepositories() {
-        viewModel.searchRepositories("circle", "Repositories")
+    private fun searchRepositories(query: String) {
+        viewModel.searchRepositories(query, "Repositories")
     }
 
     /**
@@ -68,6 +71,27 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    /**
+     * Setup search functionalities
+     * @param searchBox The edittext to be used
+     */
+    private fun initSearch(searchBox: AppCompatEditText) {
+        searchBox.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if (s != null && s.toString().trim().isNotBlank()) {
+                    val txt = s.toString().trim()
+                    searchRepositories(txt)
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // do nothing
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // do nothing
+            }
+        })
     }
 
 }
