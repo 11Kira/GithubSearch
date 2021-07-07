@@ -1,6 +1,9 @@
 package com.test.githubsearch.core
 
-
+/**
+ * ALL constant values & functions that are applicable/reusable in all modules.
+ * @author Julius Villagracia
+ */
 object CoreConstants {
 
     const val CONNECT_TIMEOUT = 60L

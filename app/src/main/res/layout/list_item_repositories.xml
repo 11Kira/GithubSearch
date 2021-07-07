@@ -9,7 +9,9 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
+            app:cardBackgroundColor="#23395d"
             app:cardCornerRadius="10dp"
+            android:elevation="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
@@ -24,26 +26,30 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ownerImg"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
                     android:layout_alignParentStart="true"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
                 <com.google.android.material.textview.MaterialTextView
+                    android:layout_marginTop="5dp"
+                    android:textColor="#4DB4D7"
                     android:layout_marginStart="20dp"
                     android:id="@+id/repoNameTxt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="false"
-                    app:layout_constraintTop_toTopOf="@id/ownerImg"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/ownerImg"
                     tools:text="Name" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:textColor="@color/white"
+                    android:maxLength="50"
+                    android:singleLine="true"
                     android:layout_marginStart="20dp"
                     android:id="@+id/descTxt"
                     android:layout_width="0dp"
@@ -54,36 +60,29 @@
                     app:layout_constraintTop_toBottomOf="@id/repoNameTxt"
                     tools:text="Description" />
 
-                <com.google.android.material.textview.MaterialTextView
+                <com.google.android.material.chip.Chip
+                    app:chipIcon="@drawable/ic_star"
+                    app:chipIconTint="#23395d"
+                    android:textColor="#23395d"
                     android:layout_marginStart="20dp"
                     android:id="@+id/stargazerTxt"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_centerVertical="false"
                     app:layout_constraintStart_toEndOf="@id/ownerImg"
                     app:layout_constraintTop_toBottomOf="@id/descTxt"
                     tools:text="13.5k" />
 
-                <com.google.android.material.textview.MaterialTextView
+                <com.google.android.material.chip.Chip
+                    android:textColor="#23395d"
                     android:layout_marginStart="20dp"
                     android:id="@+id/languageTxt"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_centerVertical="false"
                     app:layout_constraintStart_toEndOf="@id/stargazerTxt"
                     app:layout_constraintTop_toBottomOf="@id/descTxt"
                     tools:text="Language" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_marginStart="20dp"
-                    android:id="@+id/updatedDateTxt"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="false"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/languageTxt"
-                    app:layout_constraintTop_toBottomOf="@id/descTxt"
-                    tools:text="Updated on" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -7,7 +7,7 @@ data class Repository(
     @SerializedName("id")
     val id: Long,
     @SerializedName("node_id")
-    val nodeId: Long,
+    val nodeId: String = "",
     @SerializedName("name")
     val name: String = "",
     @SerializedName("full_name")
@@ -20,7 +20,9 @@ data class Repository(
     val htmlUrl: String? = "",
     @SerializedName("description")
     val description: String? = "",
+    @SerializedName("language")
+    val language: String? = "",
     @SerializedName("stargazers_count")
-    val stargazersCount: Long
+    val stargazersCount: Int
 
 ): Serializable
