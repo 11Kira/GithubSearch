@@ -61,6 +61,8 @@
                     tools:text="Description" />
 
                 <com.google.android.material.chip.Chip
+                    app:chipIcon="@drawable/ic_star"
+                    app:chipIconTint="#23395d"
                     android:textColor="#23395d"
                     android:layout_marginStart="20dp"
                     android:id="@+id/stargazerTxt"
@@ -81,18 +83,6 @@
                     app:layout_constraintStart_toEndOf="@id/stargazerTxt"
                     app:layout_constraintTop_toBottomOf="@id/descTxt"
                     tools:text="Language" />
-
-                <com.google.android.material.chip.Chip
-                    android:textColor="#23395d"
-                    android:layout_marginStart="20dp"
-                    android:id="@+id/updatedDateTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="false"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/languageTxt"
-                    app:layout_constraintTop_toBottomOf="@id/descTxt"
-                    tools:text="Updated on" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
