@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.test.githubsearch.databinding.ActivityMainBinding
+import com.test.githubsearch.repo.RepositoryViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * Activity class for the repository list
@@ -14,10 +16,16 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     private lateinit var repoListAdapter: RepoListAdapter
+    private val viewModel: RepositoryViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        searchRepositories()
+    }
+
+    private fun searchRepositories() {
+        viewModel.searchRepositories("circle", "Repositories")
     }
 
     /**
