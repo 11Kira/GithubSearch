@@ -1,5 +1,7 @@
 package com.test.githubsearch
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -49,6 +51,11 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             adapter = repoListAdapter
+        }
+        repoListAdapter.onItemClick = { repository ->
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse(repository.htmlUrl)
+            })
         }
     }
 

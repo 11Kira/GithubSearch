@@ -18,6 +18,7 @@ class RepoListAdapter(
 ) : RecyclerView.Adapter<RepoListAdapter.ViewHolder>() {
 
     lateinit var binding: ListItemRepositoriesBinding
+    var onItemClick: ((Repository) -> Unit)? = null
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (itemCount > 0) {
@@ -51,5 +52,11 @@ class RepoListAdapter(
 
     inner class ViewHolder(
         val binding: ListItemRepositoriesBinding
-    ) : RecyclerView.ViewHolder(binding.root)
+    ) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            itemView.setOnClickListener {
+                onItemClick?.invoke(repoList[bindingAdapterPosition])
+            }
+        }
+    }
 }
