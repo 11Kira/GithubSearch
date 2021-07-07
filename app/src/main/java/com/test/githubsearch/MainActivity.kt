@@ -6,22 +6,23 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.test.githubsearch.core.BaseActivity
 import com.test.githubsearch.databinding.ActivityMainBinding
 import com.test.githubsearch.repo.RepoEvent
 import com.test.githubsearch.repo.Repository
 import com.test.githubsearch.repo.RepositoryViewModel
+import com.test.githubsearch.utils.NetworkUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * Activity class for the repository list
  * @author Julius Villagracia
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     lateinit var binding: ActivityMainBinding
     private lateinit var repoListAdapter: RepoListAdapter
@@ -36,9 +37,13 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Submits the search query to viewModel
+     * @param the search query to be submitted to API
      */
     private fun searchRepositories(query: String) {
-        viewModel.searchRepositories(query, "Repositories")
+        NetworkUtil.checkInternetConnectivity(this)
+        {
+            viewModel.searchRepositories(query, "Repositories")
+        }
     }
 
     /**
