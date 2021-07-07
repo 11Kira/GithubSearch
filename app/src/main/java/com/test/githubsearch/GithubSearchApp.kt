@@ -10,6 +10,10 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
+/**
+ * Application class to initialize 3rd party integrations.
+ * @author Julius Villagracia
+ */
 class GithubSearchApp : Application() {
     override fun onCreate() {
         super.onCreate()

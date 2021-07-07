@@ -6,6 +6,10 @@ import com.test.githubsearch.core.network.ResponseCodes
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
+/**
+ * Base viewModel class containing reusable methods.
+ * @author Julius Villagracia
+ */
 open class BaseViewModel : ViewModel(), KoinComponent {
 
     protected val applicationContext: Context by inject()

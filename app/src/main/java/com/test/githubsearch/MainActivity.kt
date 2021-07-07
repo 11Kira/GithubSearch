@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Initializes the recyclerview and contents
+     * @param repoList The repository list
      */
     private fun initRecyclerView(repoList: List<Repository>) {
         repoListAdapter = RepoListAdapter(repoList)
@@ -48,6 +49,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Observes the search results livedata
+     */
     private fun observeSearchResults() {
         lifecycleScope.launchWhenCreated {
             viewModel.events.observe(this@MainActivity) { event ->
@@ -56,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                         initRecyclerView(event.repositories)
                     }
                     is RepoEvent.OnNoAvailable -> {
-                        //no available tip
+                        //no available item
                     }
                     is RepoEvent.OnFailedFetching -> {
                         Log.e("ERROR", "error")

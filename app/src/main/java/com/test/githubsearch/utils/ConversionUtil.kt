@@ -5,6 +5,10 @@ import java.util.*
 import kotlin.math.ln
 import kotlin.math.pow
 
+/**
+ * Object containing conversion related functions.
+ * @author Julius Villagracia
+ */
 object ConversionUtil {
 
     /**

@@ -10,6 +10,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.inject
 
+/**
+ * ViewModel class for the repository related API calls
+ * @author Julius Villagracia
+ */
 class RepositoryViewModel : BaseViewModel() {
 
     private val repositoryResultsRepo: RepositoryResultsRepo by inject()
@@ -17,6 +21,11 @@ class RepositoryViewModel : BaseViewModel() {
     private val _events = MutableLiveData<UIEvent>()
     val events: LiveData<UIEvent> = _events
 
+    /**
+     * Submits the search query to API
+     * @param query The search query to be submitted
+     * @param type The type of search
+     */
     fun searchRepositories(query: String, type: String) {
         _events.value = RepoEvent.OnStartLoading(true)
         viewModelScope.launch(Dispatchers.IO) {
