@@ -1,4 +1,4 @@
-package com.test.githubsearch.repo
+package com.test.githubsearch.model
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

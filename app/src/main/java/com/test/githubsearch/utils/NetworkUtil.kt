@@ -5,8 +5,11 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.provider.Settings
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.test.githubsearch.R
-import com.test.githubsearch.core.BaseActivity
+import com.test.githubsearch.core.base.BaseActivity
+import kotlinx.serialization.ExperimentalSerializationApi
 
 /**
  * Utility class to be used for network related calls
@@ -60,4 +63,9 @@ object NetworkUtil {
     private fun openInternetSettings(context: Context) {
         context.startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
     }
+
+    @ExperimentalSerializationApi
+    fun json(): Gson = GsonBuilder().apply {
+        setLenient()
+    }.create()
 }

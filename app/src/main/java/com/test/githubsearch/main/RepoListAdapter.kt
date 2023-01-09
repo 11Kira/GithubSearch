@@ -1,19 +1,21 @@
-package com.test.githubsearch
+package com.test.githubsearch.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.test.githubsearch.R
 import com.test.githubsearch.databinding.ListItemRepositoriesBinding
-import com.test.githubsearch.repo.Repository
+import com.test.githubsearch.model.Repository
 import com.test.githubsearch.utils.ConversionUtil
+import javax.inject.Inject
 
 /**
  * Adapter class for repository list
  * @author Julius Villagracia
  */
-class RepoListAdapter(
+class RepoListAdapter @Inject constructor(
     private var repoList: List<Repository>
 ) : RecyclerView.Adapter<RepoListAdapter.ViewHolder>() {
 
