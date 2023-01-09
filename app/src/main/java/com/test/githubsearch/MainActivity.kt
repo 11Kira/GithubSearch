@@ -8,14 +8,17 @@ import android.text.TextWatcher
 import android.util.Log
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.test.githubsearch.core.BaseActivity
 import com.test.githubsearch.databinding.ActivityMainBinding
-import com.test.githubsearch.repo.RepoEvent
+import com.test.githubsearch.repo.RepoState
 import com.test.githubsearch.repo.Repository
 import com.test.githubsearch.repo.RepositoryViewModel
 import com.test.githubsearch.utils.NetworkUtil
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -68,17 +71,20 @@ class MainActivity : BaseActivity() {
      * Observes the search results livedata
      */
     private fun observeSearchResults() {
-        lifecycleScope.launchWhenCreated {
-            viewModel.events.observe(this@MainActivity) { event ->
-                when (event) {
-                    is RepoEvent.OnFinishedLoading -> {
-                        initRecyclerView(event.repositories)
-                    }
-                    is RepoEvent.OnNoAvailable -> {
-                        //no available item
-                    }
-                    is RepoEvent.OnFailedFetching -> {
-                        Log.e("ERROR", "error")
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.repoState.collect { state ->
+                    when (state) {
+                        is RepoState.SetResults -> {
+                            initRecyclerView(state.repoList)
+                        }
+                        is RepoState.ShowError -> {
+                            Log.e("Error: ", state.error.toString())
+                        }
+                        else -> {
+                            Log.e("Error: ", state.toString())
+
+                        }
                     }
                 }
             }
