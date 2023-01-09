@@ -2,8 +2,10 @@ package com.test.githubsearch
 
 import android.app.Application
 import com.test.githubsearch.core.modules.apiModule
+import com.test.githubsearch.core.modules.implModule
 import com.test.githubsearch.core.modules.repositoryModule
 import com.test.githubsearch.core.modules.retrofitModule
+import com.test.githubsearch.core.modules.useCaseModule
 import com.test.githubsearch.core.modules.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -25,6 +27,8 @@ class GithubSearchApp : Application() {
             androidLogger(Level.ERROR)
             androidContext(this@GithubSearchApp)
             modules(
+                implModule,
+                useCaseModule,
                 viewModelModule,
                 repositoryModule,
                 retrofitModule,
