@@ -1,13 +1,13 @@
-package com.test.githubsearch.core
+package com.test.githubsearch.core.base
 
 import android.content.DialogInterface.BUTTON_NEGATIVE
 import android.content.DialogInterface.BUTTON_POSITIVE
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.test.githubsearch.core.base.hilt.HiltActivityEntryPoint
 
-open class BaseActivity : AppCompatActivity() {
+open class BaseActivity : HiltActivityEntryPoint() {
 
     private var alertDialog: AlertDialog? = null
 

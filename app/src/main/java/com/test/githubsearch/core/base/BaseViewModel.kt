@@ -1,18 +1,13 @@
-package com.test.githubsearch.core
+package com.test.githubsearch.core.base
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import com.test.githubsearch.core.network.ResponseCodes
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
 /**
  * Base viewModel class containing reusable methods.
  * @author Julius Villagracia
  */
-open class BaseViewModel : ViewModel(), KoinComponent {
-
-    protected val applicationContext: Context by inject()
+abstract class BaseViewModel : ViewModel() {
 
     protected fun getGenericError(errorCode: Int): String {
         return when (errorCode) {
@@ -26,10 +21,6 @@ open class BaseViewModel : ViewModel(), KoinComponent {
             ResponseCodes.GATEWAY_TIMEOUT.code -> ResponseCodes.GATEWAY_TIMEOUT.name
             else -> ResponseCodes.UNKNOWN_ERROR.name
         }
-    }
-
-    protected fun getString(resId: Int): String {
-        return applicationContext.getString(resId)
     }
 
 }

@@ -1,4 +1,4 @@
-package com.test.githubsearch
+package com.test.githubsearch.main
 
 import android.content.Intent
 import android.net.Uri
@@ -6,20 +6,21 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.test.githubsearch.core.BaseActivity
+import com.test.githubsearch.R
+import com.test.githubsearch.core.base.BaseActivity
 import com.test.githubsearch.databinding.ActivityMainBinding
+import com.test.githubsearch.model.Repository
 import com.test.githubsearch.repo.RepoState
-import com.test.githubsearch.repo.Repository
 import com.test.githubsearch.repo.RepositoryViewModel
 import com.test.githubsearch.utils.NetworkUtil
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * Activity class for the repository list
@@ -29,7 +30,7 @@ class MainActivity : BaseActivity() {
 
     lateinit var binding: ActivityMainBinding
     private lateinit var repoListAdapter: RepoListAdapter
-    private val viewModel: RepositoryViewModel by viewModel()
+    private val viewModel: RepositoryViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

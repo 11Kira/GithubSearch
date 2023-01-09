@@ -1,6 +1,6 @@
-package com.test.githubsearch.repo
+package com.test.githubsearch.core.network
 
-import com.test.githubsearch.core.response.ApiResponse
+import com.test.githubsearch.model.Repository
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

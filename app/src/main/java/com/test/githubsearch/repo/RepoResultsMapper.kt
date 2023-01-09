@@ -1,7 +1,7 @@
 package com.test.githubsearch.core
 
-import com.test.githubsearch.core.response.ApiResponse
-import com.test.githubsearch.repo.Repository
+import com.test.githubsearch.core.network.ApiResponse
+import com.test.githubsearch.model.Repository
 import retrofit2.Response
 
 fun Response<ApiResponse<List<Repository>>>.mapSearchResponseToDomain(): List<Repository> {
